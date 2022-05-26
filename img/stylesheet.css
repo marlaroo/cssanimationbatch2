@@ -1,0 +1,332 @@
+:root{
+	--rc: #ff0000;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+	background-color: #222;
+	color: #fff;
+}
+
+.header input[type="radio"], .header input[type="checkbox"]{
+	display: none;
+}
+
+.header nav{
+	width: 150px;
+	height: 100vh;
+	background-color: rgba(25, 25, 25);
+	box-shadow: inset -2px 0 0 0 var(--rc);
+	border-radius: 0 15px 15px 0;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	transform: translateY(-100%);
+	transition: all 0.5s ease-out;
+}
+
+.header nav ul{
+	width: 100%;
+	height: 90%;
+	list-style-type: none;
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.header nav ul li{
+	transition: all 0.25s ease-out;
+}
+
+.header nav ul li:hover{
+	filter: opacity(50%)
+}
+
+.header nav ul li a{
+	text-decoration: none;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.header nav ul li a label{
+	width: 95%;
+	height: 50px;
+	color: #fff;
+	border-radius: 25px 0 0 25px;
+
+	text-transform: uppercase;
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	cursor: pointer;
+}
+
+.header #home:checked ~ nav ul li a label[for="home"],
+.header #pages:checked ~ nav ul li a label[for="pages"],
+.header #tours:checked ~ nav ul li a label[for="tours"],
+.header #blog:checked ~ nav ul li a label[for="blog"],
+.header #shop:checked ~ nav ul li a label[for="shop"],
+.header #elements:checked ~ nav ul li a label[for="elements"]{
+	background-color: var(--rc);
+	transition: all 0.25s linear;
+}
+
+.header nav ul li a label i{
+	margin: 0 13px;
+}
+
+.header .name{
+	padding: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.header .name .hamburger-con{
+	width: 55px;
+	height: 55px;
+	background-color: #333;
+	border-radius: 20%;
+	box-shadow: inset 0 -2px 0 0 #444, 
+				inset 0 2px 0 0 #444;
+
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	z-index: 20;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	user-select: none;
+	cursor: pointer;
+}
+
+.header .name .hamburger-con .hamburger,
+.header .name .hamburger-con::before,
+.header .name .hamburger-con::after{
+	width: 35px;
+	height: 3px;
+	background-color: #fff;
+	border-radius: 3px;
+
+	transition: all 0.25s linear;
+}
+
+.header .name .hamburger-con .hamburger{
+	transition-delay: 0.25s;
+}
+
+.header .name .hamburger-con::before,
+.header .name .hamburger-con::after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+} 
+
+.header .name .hamburger-con::before{
+	transform: translate(-50%, -330%);
+}
+
+.header .name .hamburger-con::after{
+	transform: translate(-50%, 200%);
+}
+
+.header #menu:checked ~ nav{
+	transform: translateY(0%);
+}
+
+.header #menu:checked ~ .name .hamburger-con .hamburger{
+	width: 0%;
+	transition-delay: 0s;
+}
+
+.header #menu:checked ~ .name .hamburger-con::before{
+	transform: translate(-50%, -50%) rotate(45deg);
+	transition-delay: 0.25s;
+}
+
+.header #menu:checked ~ .name .hamburger-con::after{
+	transform: translate(-50%, -50%) rotate(-45deg);
+	transition-delay: 0.25s;
+}
+
+.header .name .close{
+	width: 3px;
+	height: 50px;
+	background-color: #fff;
+
+	border-radius: 10px;
+	margin: 0 30px 0 150px;
+}
+
+.header .name .text-icon-con{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+}
+
+.header .name .text-icon-con h1 span{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	color: var(--rc);
+	display: inline-block;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+	transform: translateY(-100px) scale(0.5);
+	animation: flower 2s linear 1 forwards;
+}
+
+.header .name .text-icon-con h1 span:nth-of-type(2){
+	animation-delay: 0.4s;
+}
+
+.header .name .text-icon-con h1 span:nth-of-type(3){
+	animation-delay: 0.8s;
+}
+
+.header .name .text-icon-con h1 span:nth-of-type(4){
+	animation-delay: 1.2s;
+}
+
+.header .name .text-icon-con h1 span:nth-of-type(5){
+	animation-delay: 1.6s;
+}
+
+@keyframes flower{
+	50%{
+		transform: translateY(0px) scale(0.5);
+	}
+
+	100%{
+		transform: translateY(0px) scale(1) rotateY(1turn);
+	}
+}
+
+.header .name .search-con{
+	position: relative;
+	width: 30%;
+}
+
+.header .name .search-con input{
+	width: 0%;
+	height: 100%;
+	background-color: transparent;
+	color: whitesmoke;
+
+	padding: 10px 15px 10px 50px;
+	border: none;
+	border-bottom: 2px solid whitesmoke;
+	outline: none;
+
+	transition: all 0.5s ease-in-out;
+}
+
+.header .name .search-con input::placeholder{
+	color: whitesmoke;
+	opacity: 1;
+}
+
+.header .name .search-con label i{
+	font-size: 20px;
+
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+
+	cursor: pointer;
+}
+
+#search-bar:checked ~ .search-con input{
+	width: 100%;
+}
+
+.header .name .text-icon-con .icon-con a{
+	text-decoration: none;
+	width: 40px;
+ 	height: 40px;
+ 	color: #fff;
+ 	font-size: 20px;
+
+ 	display: inline-block;
+
+ 	text-align: center;
+ 	line-height: 38px;
+	
+	border: 2px solid #fff;
+	border-radius: 50%;
+	margin: 0 20px;
+ 	
+ 	position: relative;
+ 	cursor: pointer;
+
+ 	overflow: hidden;
+}
+
+.header .text-icon-con .icon-con a::before{
+	content: '';
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: -1;
+
+	transition: all 0.5s linear;
+}
+
+.header .text-icon-con .icon-con a i{
+	transition: all 0.5s linear;
+}
+
+.header .text-icon-con .icon-con a:nth-of-type(1)::before{
+	background: #00c6ff;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to bottom, #00c6ff, #0072ff);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to bottom, #00c6ff, #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header .text-icon-con .icon-con a:nth-of-type(2)::before{
+	background-color: rgb(28, 156, 235);
+}
+
+.header .text-icon-con .icon-con a:nth-of-type(3)::before{
+	background: #833ab4;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right top, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right top, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header .text-icon-con .icon-con a:nth-of-type(4)::before{
+	background: #e52d27;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header .text-icon-con .icon-con a:nth-of-type(5)::before{
+	background-color: var(--rc);
+}
+
+.header .text-icon-con .icon-con a:hover::before{
+	top: 0;
+}
+
+.header .text-icon-con .icon-con a:hover i{
+	transform: rotateY(1turn);

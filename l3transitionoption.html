@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CSS Transition Option</title>
+		<style type="text/css">
+
+			.container{
+				width: 960px;
+			}
+
+			.move{
+				width: 150px;
+				height: 50px;
+				background-color: pink;
+				color: #fff;
+				font-size: 20px;
+				padding: 10px;
+
+				text-align: center;
+				line-height: 50px;
+				/*border-radius: 16px;
+					1rem=16px*/
+				border-radius: 1rem;
+
+				margin: 2rem;
+
+				transition:all 6s;
+				
+			}
+
+			/*function(parameter)*/
+			.move:hover{
+				transform:translate(900px);
+			}
+
+			#east{
+				/*stat(slow)->slow->slow(end)*/
+				transition-timing-function:ease;
+			}
+
+			#east-in{
+				/*start(slow)->slow->end(fast)*/
+				transition-timing-function:ease-in;
+
+			}
+
+			#east-out{
+				/*start(fast)->slow->end(slow)*/
+				transition-timing-function:ease-out;
+
+
+			}
+
+			#east-in-out{
+				/*stat(slow)->fast->slow(end)*/
+				transition-timing-function:ease-in-out;
+
+
+			}
+
+			#linear{
+				/*transition duration */
+				transition-timing-function:linear;
+
+
+			}
+
+		</style>
+	</head>
+	<body>
+		
+	<div class="container">
+		<div id="ease" class="move">Ease</div>
+		<div id="ease-in" class="move">Ease-In</div>
+		<div id="ease-out" class="move">Ease-Out</div>
+		<div id="ease-in-out" class="move">Ease-In-Out</div>
+		<div id="linear" class="move">Linear</div>
+
+	</div>
+
+	</body>
+</html>
